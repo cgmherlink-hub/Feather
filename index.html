@@ -76,9 +76,46 @@
     color: var(--muted);
     text-align: center;
   }
+  .btn-area {
+    text-align: center;
+    margin: 24px 0 10px;
+  }
+  .btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.05rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #0b5ed7; }
+  .btn-secondary {
+    background: #6c757d;
+    margin-left: 10px;
+  }
+  .btn-secondary:hover { background: #5c636a; }
+  #summaryBox {
+    display: none;
+    background: #e7f1ff;
+    border: 1px solid #b6d4fe;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 20px;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  #summaryBox h3 {
+    margin-top: 0;
+    color: #084298;
+  }
   @media print {
     body { background: white; padding: 0; }
     .card { box-shadow: none; }
+    .btn-area { display: none; }
   }
 </style>
 </head>
@@ -108,150 +145,159 @@
     <h2>症狀與病史問卷（請勾選符合的項目）</h2>
 
     <!-- 1. 疼痛時間 -->
-    <div class="question-group">
+    <div class="question-group" data-q="1. 疼痛開始時間">
       <div class="question-title">1. 疼痛開始時間大約是？</div>
       <div class="options">
-        <label><input type="radio" name="onset"> 1 週內</label>
-        <label><input type="radio" name="onset"> 1–4 週</label>
-        <label><input type="radio" name="onset"> 1–3 個月</label>
-        <label><input type="radio" name="onset"> 超過 3 個月</label>
-        <label><input type="radio" name="onset"> 超過 1 年</label>
+        <label><input type="radio" name="onset" value="1 週內"> 1 週內</label>
+        <label><input type="radio" name="onset" value="1–4 週"> 1–4 週</label>
+        <label><input type="radio" name="onset" value="1–3 個月"> 1–3 個月</label>
+        <label><input type="radio" name="onset" value="超過 3 個月"> 超過 3 個月</label>
+        <label><input type="radio" name="onset" value="超過 1 年"> 超過 1 年</label>
       </div>
     </div>
 
     <!-- 2. 疼痛性質 -->
-    <div class="question-group">
+    <div class="question-group" data-q="2. 疼痛性質">
       <div class="question-title">2. 疼痛性質（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 酸痛</label>
-        <label><input type="checkbox"> 刺痛</label>
-        <label><input type="checkbox"> 鈍痛</label>
-        <label><input type="checkbox"> 抽痛 / 跳痛</label>
-        <label><input type="checkbox"> 燒灼感</label>
-        <label><input type="checkbox"> 緊繃感</label>
+        <label><input type="checkbox" value="酸痛"> 酸痛</label>
+        <label><input type="checkbox" value="刺痛"> 刺痛</label>
+        <label><input type="checkbox" value="鈍痛"> 鈍痛</label>
+        <label><input type="checkbox" value="抽痛 / 跳痛"> 抽痛 / 跳痛</label>
+        <label><input type="checkbox" value="燒灼感"> 燒灼感</label>
+        <label><input type="checkbox" value="緊繃感"> 緊繃感</label>
       </div>
     </div>
 
     <!-- 3. 一天中何時最嚴重 -->
-    <div class="question-group">
+    <div class="question-group" data-q="3. 一天中何時最嚴重">
       <div class="question-title">3. 一天中何時最嚴重？（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 早上剛起床</label>
-        <label><input type="checkbox"> 活動後 / 使用後</label>
-        <label><input type="checkbox"> 晚上 / 休息後</label>
-        <label><input type="checkbox"> 整天差不多</label>
-        <label><input type="checkbox"> 夜間會痛醒</label>
+        <label><input type="checkbox" value="早上剛起床"> 早上剛起床</label>
+        <label><input type="checkbox" value="活動後 / 使用後"> 活動後 / 使用後</label>
+        <label><input type="checkbox" value="晚上 / 休息後"> 晚上 / 休息後</label>
+        <label><input type="checkbox" value="整天差不多"> 整天差不多</label>
+        <label><input type="checkbox" value="夜間會痛醒"> 夜間會痛醒</label>
       </div>
     </div>
 
     <!-- 4. 早晨僵硬 -->
-    <div class="question-group">
+    <div class="question-group" data-q="4. 早晨僵硬時間">
       <div class="question-title">4. 早晨手腕僵硬時間大約多久？</div>
       <div class="options">
-        <label><input type="radio" name="stiffness"> 幾乎沒有</label>
-        <label><input type="radio" name="stiffness"> &lt; 15 分鐘</label>
-        <label><input type="radio" name="stiffness"> 15–30 分鐘</label>
-        <label><input type="radio" name="stiffness"> 30–60 分鐘</label>
-        <label><input type="radio" name="stiffness"> &gt; 1 小時</label>
+        <label><input type="radio" name="stiffness" value="幾乎沒有"> 幾乎沒有</label>
+        <label><input type="radio" name="stiffness" value="< 15 分鐘"> &lt; 15 分鐘</label>
+        <label><input type="radio" name="stiffness" value="15–30 分鐘"> 15–30 分鐘</label>
+        <label><input type="radio" name="stiffness" value="30–60 分鐘"> 30–60 分鐘</label>
+        <label><input type="radio" name="stiffness" value="> 1 小時"> &gt; 1 小時</label>
       </div>
     </div>
 
     <!-- 5. 疼痛程度 -->
-    <div class="question-group">
+    <div class="question-group" data-q="5. 疼痛程度 (VAS)">
       <div class="question-title">5. 目前疼痛程度（0–10 分）</div>
       <div class="options">
-        <label><input type="radio" name="vas"> 0（無痛）</label>
-        <label><input type="radio" name="vas"> 1–3（輕微）</label>
-        <label><input type="radio" name="vas"> 4–6（中等）</label>
-        <label><input type="radio" name="vas"> 7–9（嚴重）</label>
-        <label><input type="radio" name="vas"> 10（最痛）</label>
+        <label><input type="radio" name="vas" value="0（無痛）"> 0（無痛）</label>
+        <label><input type="radio" name="vas" value="1–3（輕微）"> 1–3（輕微）</label>
+        <label><input type="radio" name="vas" value="4–6（中等）"> 4–6（中等）</label>
+        <label><input type="radio" name="vas" value="7–9（嚴重）"> 7–9（嚴重）</label>
+        <label><input type="radio" name="vas" value="10（最痛）"> 10（最痛）</label>
       </div>
     </div>
 
     <!-- 6. 腫脹相關 -->
-    <div class="question-group">
+    <div class="question-group" data-q="6. 腫脹與局部表現">
       <div class="question-title">6. 腫脹與局部表現（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 持續腫脹感</label>
-        <label><input type="checkbox"> 間歇腫脹</label>
-        <label><input type="checkbox"> 有發紅</label>
-        <label><input type="checkbox"> 有熱感</label>
-        <label><input type="checkbox"> 壓痛明顯</label>
-        <label><input type="checkbox"> 活動時喀喀聲或卡住感</label>
+        <label><input type="checkbox" value="持續腫脹感"> 持續腫脹感</label>
+        <label><input type="checkbox" value="間歇腫脹"> 間歇腫脹</label>
+        <label><input type="checkbox" value="有發紅"> 有發紅</label>
+        <label><input type="checkbox" value="有熱感"> 有熱感</label>
+        <label><input type="checkbox" value="壓痛明顯"> 壓痛明顯</label>
+        <label><input type="checkbox" value="活動時喀喀聲或卡住感"> 活動時喀喀聲或卡住感</label>
       </div>
     </div>
 
     <!-- 7. 其他關節 -->
-    <div class="question-group">
+    <div class="question-group" data-q="7. 其他關節不適">
       <div class="question-title">7. 是否有其他關節不適？（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 手指關節</label>
-        <label><input type="checkbox"> 手肘</label>
-        <label><input type="checkbox"> 肩膀</label>
-        <label><input type="checkbox"> 膝蓋</label>
-        <label><input type="checkbox"> 腳踝 / 足部</label>
-        <label><input type="checkbox"> 下背 / 臀部</label>
-        <label><input type="checkbox"> 頸部</label>
-        <label><input type="checkbox"> 無其他關節</label>
+        <label><input type="checkbox" value="手指關節"> 手指關節</label>
+        <label><input type="checkbox" value="手肘"> 手肘</label>
+        <label><input type="checkbox" value="肩膀"> 肩膀</label>
+        <label><input type="checkbox" value="膝蓋"> 膝蓋</label>
+        <label><input type="checkbox" value="腳踝 / 足部"> 腳踝 / 足部</label>
+        <label><input type="checkbox" value="下背 / 臀部"> 下背 / 臀部</label>
+        <label><input type="checkbox" value="頸部"> 頸部</label>
+        <label><input type="checkbox" value="無其他關節"> 無其他關節</label>
       </div>
     </div>
 
     <!-- 8. 工作與活動 -->
-    <div class="question-group">
+    <div class="question-group" data-q="8. 日常或工作相關">
       <div class="question-title">8. 日常或工作相關（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 長時間使用電腦 / 滑鼠</label>
-        <label><input type="checkbox"> 長時間使用手機</label>
-        <label><input type="checkbox"> 重覆性手部動作（組裝、打字、剪裁等）</label>
-        <label><input type="checkbox"> 需用力握持或提重物</label>
-        <label><input type="checkbox"> 球類或手部運動（羽球、網球、高爾夫等）</label>
-        <label><input type="checkbox"> 樂器演奏</label>
-        <label><input type="checkbox"> 以上皆無明顯相關</label>
+        <label><input type="checkbox" value="長時間使用電腦 / 滑鼠"> 長時間使用電腦 / 滑鼠</label>
+        <label><input type="checkbox" value="長時間使用手機"> 長時間使用手機</label>
+        <label><input type="checkbox" value="重覆性手部動作"> 重覆性手部動作（組裝、打字、剪裁等）</label>
+        <label><input type="checkbox" value="需用力握持或提重物"> 需用力握持或提重物</label>
+        <label><input type="checkbox" value="球類或手部運動"> 球類或手部運動（羽球、網球、高爾夫等）</label>
+        <label><input type="checkbox" value="樂器演奏"> 樂器演奏</label>
+        <label><input type="checkbox" value="以上皆無明顯相關"> 以上皆無明顯相關</label>
       </div>
     </div>
 
     <!-- 9. 系統性症狀 -->
-    <div class="question-group">
+    <div class="question-group" data-q="9. 其他全身症狀">
       <div class="question-title">9. 其他全身症狀（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 發燒或低燒</label>
-        <label><input type="checkbox"> 明顯疲倦</label>
-        <label><input type="checkbox"> 體重減輕</label>
-        <label><input type="checkbox"> 皮疹</label>
-        <label><input type="checkbox"> 口腔潰瘍</label>
-        <label><input type="checkbox"> 眼睛乾澀或發紅</label>
-        <label><input type="checkbox"> 乾咳或呼吸不適</label>
-        <label><input type="checkbox"> 無以上症狀</label>
+        <label><input type="checkbox" value="發燒或低燒"> 發燒或低燒</label>
+        <label><input type="checkbox" value="明顯疲倦"> 明顯疲倦</label>
+        <label><input type="checkbox" value="體重減輕"> 體重減輕</label>
+        <label><input type="checkbox" value="皮疹"> 皮疹</label>
+        <label><input type="checkbox" value="口腔潰瘍"> 口腔潰瘍</label>
+        <label><input type="checkbox" value="眼睛乾澀或發紅"> 眼睛乾澀或發紅</label>
+        <label><input type="checkbox" value="乾咳或呼吸不適"> 乾咳或呼吸不適</label>
+        <label><input type="checkbox" value="無以上症狀"> 無以上症狀</label>
       </div>
     </div>
 
     <!-- 10. 家族史 -->
-    <div class="question-group">
+    <div class="question-group" data-q="10. 家族史">
       <div class="question-title">10. 家族中是否有以下疾病？（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 類風濕性關節炎</label>
-        <label><input type="checkbox"> 乾癬 / 乾癬性關節炎</label>
-        <label><input type="checkbox"> 僵直性脊椎炎</label>
-        <label><input type="checkbox"> 其他自體免疫疾病（紅斑性狼瘡等）</label>
-        <label><input type="checkbox"> 痛風</label>
-        <label><input type="checkbox"> 不知道 / 無</label>
+        <label><input type="checkbox" value="類風濕性關節炎"> 類風濕性關節炎</label>
+        <label><input type="checkbox" value="乾癬 / 乾癬性關節炎"> 乾癬 / 乾癬性關節炎</label>
+        <label><input type="checkbox" value="僵直性脊椎炎"> 僵直性脊椎炎</label>
+        <label><input type="checkbox" value="其他自體免疫疾病"> 其他自體免疫疾病（紅斑性狼瘡等）</label>
+        <label><input type="checkbox" value="痛風"> 痛風</label>
+        <label><input type="checkbox" value="不知道 / 無"> 不知道 / 無</label>
       </div>
     </div>
 
     <!-- 11. 其他 -->
-    <div class="question-group">
+    <div class="question-group" data-q="11. 其他相關">
       <div class="question-title">11. 其他相關（可複選）</div>
       <div class="options">
-        <label><input type="checkbox"> 目前有在服用止痛藥或消炎藥</label>
-        <label><input type="checkbox"> 有使用保健品（葡萄糖胺、魚油等）</label>
-        <label><input type="checkbox"> 過去有手腕外傷或骨折</label>
-        <label><input type="checkbox"> 有甲狀腺疾病病史</label>
-        <label><input type="checkbox"> 有糖尿病病史</label>
-        <label><input type="checkbox"> 以上皆無</label>
+        <label><input type="checkbox" value="目前有在服用止痛藥或消炎藥"> 目前有在服用止痛藥或消炎藥</label>
+        <label><input type="checkbox" value="有使用保健品"> 有使用保健品（葡萄糖胺、魚油等）</label>
+        <label><input type="checkbox" value="過去有手腕外傷或骨折"> 過去有手腕外傷或骨折</label>
+        <label><input type="checkbox" value="有甲狀腺疾病病史"> 有甲狀腺疾病病史</label>
+        <label><input type="checkbox" value="有糖尿病病史"> 有糖尿病病史</label>
+        <label><input type="checkbox" value="以上皆無"> 以上皆無</label>
       </div>
     </div>
 
-    <p class="note">※ 請將勾選結果連同本頁一併提供給醫師參考。</p>
+    <!-- 按鈕區 -->
+    <div class="btn-area">
+      <button class="btn" onclick="generateSummary()">產生摘要</button>
+      <button class="btn btn-secondary" onclick="clearSummary()">清除摘要</button>
+    </div>
+
+    <!-- 摘要顯示區 -->
+    <div id="summaryBox"></div>
+
+    <p class="note">※ 請將勾選結果或產生的摘要連同本頁一併提供給醫師參考。</p>
   </div>
 
   <!-- 建議問卷 -->
@@ -310,5 +356,49 @@
   </div>
 
 </div>
+
+<script>
+function generateSummary() {
+  const groups = document.querySelectorAll('.question-group');
+  let summary = '【雙手腕疼痛 症狀摘要】\n';
+  summary += '整理日期：' + new Date().toLocaleDateString('zh-TW') + '\n\n';
+  summary += '已知資料：雙手腕疼痛、腫脹感；無外傷、無麻木。\n';
+  summary += '異常檢驗：總膽固醇 238、LDL-C 149、Non-HDL-C 157 mg/dL。\n\n';
+  summary += '----- 問卷勾選結果 -----\n';
+
+  let hasAny = false;
+
+  groups.forEach(group => {
+    const title = group.getAttribute('data-q');
+    const checked = group.querySelectorAll('input:checked');
+    if (checked.length > 0) {
+      hasAny = true;
+      const values = Array.from(checked).map(el => el.value).join('、');
+      summary += title + '：' + values + '\n';
+    }
+  });
+
+  if (!hasAny) {
+    summary += '（尚未勾選任何項目）\n';
+  }
+
+  summary += '\n----- 建議 -----\n';
+  summary += '請攜帶本摘要與原始檢驗報告，至風濕免疫科或骨科/手外科進一步評估。\n';
+  summary += '建議檢查方向：RF + anti-CCP、ESR、雙手X光、手腕超音波，並評估血脂。';
+
+  const box = document.getElementById('summaryBox');
+  box.style.display = 'block';
+  box.innerHTML = '<h3>產生的摘要</h3><pre style="margin:0; font-family:inherit; white-space:pre-wrap;">' + summary + '</pre>';
+  
+  // 自動捲動到摘要
+  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearSummary() {
+  const box = document.getElementById('summaryBox');
+  box.style.display = 'none';
+  box.innerHTML = '';
+}
+</script>
 </body>
 </html>
