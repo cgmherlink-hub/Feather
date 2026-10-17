@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>雙手腕疼痛 - 進一步資訊與檢查建議</title>
+<title>雙手腕疼痛 - 進一步資訊與檢查建議（勾選版）</title>
 <style>
   :root {
     --primary: #0d6efd;
@@ -12,8 +12,6 @@
     --border: #dee2e6;
     --text: #212529;
     --muted: #6c757d;
-    --danger: #dc3545;
-    --success: #198754;
   }
   * { box-sizing: border-box; }
   body {
@@ -45,42 +43,33 @@
     font-size: 0.95rem;
     margin-bottom: 24px;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.92rem;
-    margin: 10px 0;
+  .question-group { margin-bottom: 22px; }
+  .question-title { font-weight: 600; margin-bottom: 8px; }
+  .options { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f3f5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
   }
-  th, td {
-    border: 1px solid var(--border);
-    padding: 8px 10px;
-    text-align: left;
+  .options label:hover { background: #e9ecef; }
+  input[type="checkbox"], input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
   }
-  th { background: #e9ecef; }
-  .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
+  .note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 6px;
   }
-  .badge-high { background: #f8d7da; color: #842029; }
-  .badge-normal { background: #d1e7dd; color: #0f5132; }
   ul { padding-left: 1.3rem; }
   li { margin-bottom: 6px; }
-  .question-group { margin-bottom: 16px; }
-  label { display: block; margin: 4px 0; cursor: pointer; }
-  input[type="text"], textarea, select {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.95rem;
-    margin-top: 4px;
-  }
-  textarea { min-height: 70px; resize: vertical; }
-  .scale { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-  .scale label { background: #e9ecef; padding: 4px 10px; border-radius: 6px; }
   .footer {
     margin-top: 30px;
     font-size: 0.85rem;
@@ -100,7 +89,7 @@
     <strong>重要聲明：</strong>本頁面僅供整理症狀與建議檢查方向之用，<strong>絕非診斷或治療建議</strong>。雙手腕疼痛請務必由醫師（風濕免疫科或骨科/手外科）親自評估。血脂異常亦需與醫師討論後續處置。
   </div>
 
-  <h1>雙手腕疼痛 — 進一步資訊與檢查建議</h1>
+  <h1>雙手腕疼痛 — 進一步資訊與檢查建議（勾選版）</h1>
   <p style="color:var(--muted); margin-top:0;">整理日期：2026-10-18　參考檢驗日期：2026-10-03</p>
 
   <!-- 目前已知資料 -->
@@ -109,131 +98,202 @@
     <ul>
       <li><strong>主訴：</strong>雙手腕疼痛、有腫脹感</li>
       <li><strong>否定病史：</strong>無外傷史、無麻木感</li>
-      <li><strong>重要異常檢驗：</strong>
-        <span class="badge badge-high">總膽固醇 238</span>
-        <span class="badge badge-high">LDL-C 149</span>
-        <span class="badge badge-high">Non-HDL-C 157</span>
-        （單位 mg/dL）
-      </li>
-      <li><strong>正常或良好項目：</strong>HS-CRP、血糖、尿酸、肝腎功能、甲狀腺功能、HDL-C（偏高為佳）、三酸甘油酯、血球計數大致正常</li>
+      <li><strong>重要異常檢驗：</strong>總膽固醇 238、LDL-C 149、Non-HDL-C 157（單位 mg/dL）</li>
+      <li><strong>正常或良好項目：</strong>HS-CRP、血糖、尿酸、肝腎功能、甲狀腺功能、HDL-C、三酸甘油酯、血球計數大致正常</li>
     </ul>
   </div>
 
-  <!-- 建議進一步病史 -->
+  <!-- 勾選式問卷 -->
   <div class="card">
-    <h2>建議進一步詢問的病史（請填寫後給醫師參考）</h2>
+    <h2>症狀與病史問卷（請勾選符合的項目）</h2>
 
+    <!-- 1. 疼痛時間 -->
     <div class="question-group">
-      <strong>1. 疼痛特性</strong>
-      <label>開始時間（大約幾天/幾週/幾個月前？）：
-        <input type="text" placeholder="例：約 3 週前">
-      </label>
-      <label>疼痛性質（酸、刺、鈍痛、抽痛…）：
-        <input type="text">
-      </label>
-      <label>一天中何時最嚴重？（早上剛起床、活動後、晚上）：
-        <input type="text">
-      </label>
-      <label>早晨僵硬時間（起床後多久才比較靈活？）：
-        <input type="text" placeholder="例：約 30–60 分鐘">
-      </label>
-      <label>疼痛程度（0–10 分，0=無痛，10=最痛）：
-        <div class="scale">
-          <label><input type="radio" name="pain"> 0</label>
-          <label><input type="radio" name="pain"> 1–3</label>
-          <label><input type="radio" name="pain"> 4–6</label>
-          <label><input type="radio" name="pain"> 7–9</label>
-          <label><input type="radio" name="pain"> 10</label>
-        </div>
-      </label>
+      <div class="question-title">1. 疼痛開始時間大約是？</div>
+      <div class="options">
+        <label><input type="radio" name="onset"> 1 週內</label>
+        <label><input type="radio" name="onset"> 1–4 週</label>
+        <label><input type="radio" name="onset"> 1–3 個月</label>
+        <label><input type="radio" name="onset"> 超過 3 個月</label>
+        <label><input type="radio" name="onset"> 超過 1 年</label>
+      </div>
     </div>
 
+    <!-- 2. 疼痛性質 -->
     <div class="question-group">
-      <strong>2. 腫脹與其他關節</strong>
-      <label>腫脹是持續還是間歇？有無發紅、熱感？
-        <input type="text">
-      </label>
-      <label>是否有其他關節疼痛（手指、膝蓋、腳踝、肩膀…）？
-        <input type="text">
-      </label>
-      <label>是否有背部、臀部僵硬或疼痛？
-        <input type="text">
-      </label>
+      <div class="question-title">2. 疼痛性質（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 酸痛</label>
+        <label><input type="checkbox"> 刺痛</label>
+        <label><input type="checkbox"> 鈍痛</label>
+        <label><input type="checkbox"> 抽痛 / 跳痛</label>
+        <label><input type="checkbox"> 燒灼感</label>
+        <label><input type="checkbox"> 緊繃感</label>
+      </div>
     </div>
 
+    <!-- 3. 一天中何時最嚴重 -->
     <div class="question-group">
-      <strong>3. 生活與職業因素</strong>
-      <label>工作內容或嗜好（長時間使用電腦、滑鼠、手機、重覆性動作、運動種類）：
-        <textarea placeholder="例：每天使用電腦 8 小時、常打羽球"></textarea>
-      </label>
-      <label>近期是否有增加手部負荷的活動？
-        <input type="text">
-      </label>
+      <div class="question-title">3. 一天中何時最嚴重？（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 早上剛起床</label>
+        <label><input type="checkbox"> 活動後 / 使用後</label>
+        <label><input type="checkbox"> 晚上 / 休息後</label>
+        <label><input type="checkbox"> 整天差不多</label>
+        <label><input type="checkbox"> 夜間會痛醒</label>
+      </div>
     </div>
 
+    <!-- 4. 早晨僵硬 -->
     <div class="question-group">
-      <strong>4. 系統性症狀</strong>
-      <label>有無發燒、體重減輕、疲倦、皮疹、口腔潰瘍、眼睛乾澀/發紅、乾咳？
-        <textarea></textarea>
-      </label>
-      <label>家族中有無類風濕性關節炎、乾癬、僵直性脊椎炎、自體免疫疾病？
-        <input type="text">
-      </label>
+      <div class="question-title">4. 早晨手腕僵硬時間大約多久？</div>
+      <div class="options">
+        <label><input type="radio" name="stiffness"> 幾乎沒有</label>
+        <label><input type="radio" name="stiffness"> &lt; 15 分鐘</label>
+        <label><input type="radio" name="stiffness"> 15–30 分鐘</label>
+        <label><input type="radio" name="stiffness"> 30–60 分鐘</label>
+        <label><input type="radio" name="stiffness"> &gt; 1 小時</label>
+      </div>
     </div>
 
+    <!-- 5. 疼痛程度 -->
     <div class="question-group">
-      <strong>5. 其他</strong>
-      <label>目前使用藥物或保健品：
-        <input type="text">
-      </label>
-      <label>過去相關病史（骨折、手術、甲狀腺、糖尿病…）：
-        <input type="text">
-      </label>
+      <div class="question-title">5. 目前疼痛程度（0–10 分）</div>
+      <div class="options">
+        <label><input type="radio" name="vas"> 0（無痛）</label>
+        <label><input type="radio" name="vas"> 1–3（輕微）</label>
+        <label><input type="radio" name="vas"> 4–6（中等）</label>
+        <label><input type="radio" name="vas"> 7–9（嚴重）</label>
+        <label><input type="radio" name="vas"> 10（最痛）</label>
+      </div>
     </div>
+
+    <!-- 6. 腫脹相關 -->
+    <div class="question-group">
+      <div class="question-title">6. 腫脹與局部表現（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 持續腫脹感</label>
+        <label><input type="checkbox"> 間歇腫脹</label>
+        <label><input type="checkbox"> 有發紅</label>
+        <label><input type="checkbox"> 有熱感</label>
+        <label><input type="checkbox"> 壓痛明顯</label>
+        <label><input type="checkbox"> 活動時喀喀聲或卡住感</label>
+      </div>
+    </div>
+
+    <!-- 7. 其他關節 -->
+    <div class="question-group">
+      <div class="question-title">7. 是否有其他關節不適？（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 手指關節</label>
+        <label><input type="checkbox"> 手肘</label>
+        <label><input type="checkbox"> 肩膀</label>
+        <label><input type="checkbox"> 膝蓋</label>
+        <label><input type="checkbox"> 腳踝 / 足部</label>
+        <label><input type="checkbox"> 下背 / 臀部</label>
+        <label><input type="checkbox"> 頸部</label>
+        <label><input type="checkbox"> 無其他關節</label>
+      </div>
+    </div>
+
+    <!-- 8. 工作與活動 -->
+    <div class="question-group">
+      <div class="question-title">8. 日常或工作相關（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 長時間使用電腦 / 滑鼠</label>
+        <label><input type="checkbox"> 長時間使用手機</label>
+        <label><input type="checkbox"> 重覆性手部動作（組裝、打字、剪裁等）</label>
+        <label><input type="checkbox"> 需用力握持或提重物</label>
+        <label><input type="checkbox"> 球類或手部運動（羽球、網球、高爾夫等）</label>
+        <label><input type="checkbox"> 樂器演奏</label>
+        <label><input type="checkbox"> 以上皆無明顯相關</label>
+      </div>
+    </div>
+
+    <!-- 9. 系統性症狀 -->
+    <div class="question-group">
+      <div class="question-title">9. 其他全身症狀（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 發燒或低燒</label>
+        <label><input type="checkbox"> 明顯疲倦</label>
+        <label><input type="checkbox"> 體重減輕</label>
+        <label><input type="checkbox"> 皮疹</label>
+        <label><input type="checkbox"> 口腔潰瘍</label>
+        <label><input type="checkbox"> 眼睛乾澀或發紅</label>
+        <label><input type="checkbox"> 乾咳或呼吸不適</label>
+        <label><input type="checkbox"> 無以上症狀</label>
+      </div>
+    </div>
+
+    <!-- 10. 家族史 -->
+    <div class="question-group">
+      <div class="question-title">10. 家族中是否有以下疾病？（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 類風濕性關節炎</label>
+        <label><input type="checkbox"> 乾癬 / 乾癬性關節炎</label>
+        <label><input type="checkbox"> 僵直性脊椎炎</label>
+        <label><input type="checkbox"> 其他自體免疫疾病（紅斑性狼瘡等）</label>
+        <label><input type="checkbox"> 痛風</label>
+        <label><input type="checkbox"> 不知道 / 無</label>
+      </div>
+    </div>
+
+    <!-- 11. 其他 -->
+    <div class="question-group">
+      <div class="question-title">11. 其他相關（可複選）</div>
+      <div class="options">
+        <label><input type="checkbox"> 目前有在服用止痛藥或消炎藥</label>
+        <label><input type="checkbox"> 有使用保健品（葡萄糖胺、魚油等）</label>
+        <label><input type="checkbox"> 過去有手腕外傷或骨折</label>
+        <label><input type="checkbox"> 有甲狀腺疾病病史</label>
+        <label><input type="checkbox"> 有糖尿病病史</label>
+        <label><input type="checkbox"> 以上皆無</label>
+      </div>
+    </div>
+
+    <p class="note">※ 請將勾選結果連同本頁一併提供給醫師參考。</p>
   </div>
 
   <!-- 建議問卷 -->
   <div class="card">
     <h2>建議使用的標準化問卷 / 評分工具</h2>
-    <p>以下問卷可協助量化症狀嚴重度與功能影響，建議於就診前填寫：</p>
     <ul>
-      <li><strong>VAS 疼痛視覺類比量表</strong>（0–10 分）— 目前已於上方詢問</li>
-      <li><strong>HAQ（Health Assessment Questionnaire）</strong> 或簡化版 — 評估日常活動受限程度</li>
-      <li><strong>DASH 或 QuickDASH</strong>（Disabilities of the Arm, Shoulder and Hand）— 上肢功能專用</li>
-      <li><strong>Patient Global Assessment</strong> — 整體病情自評（0–10）</li>
-      <li>若懷疑發炎性關節炎：可加上 <strong>RAPID3</strong> 或 <strong>PAS</strong>（Patient Activity Scale）</li>
+      <li><strong>VAS 疼痛視覺類比量表</strong>（0–10 分）— 已於上方勾選</li>
+      <li><strong>QuickDASH</strong>（上肢功能評估）</li>
+      <li><strong>HAQ</strong> 或簡化版（日常生活功能）</li>
+      <li><strong>Patient Global Assessment</strong>（整體病情自評）</li>
+      <li>若懷疑發炎性關節炎：可加上 <strong>RAPID3</strong></li>
     </ul>
-    <p style="font-size:0.9rem; color:var(--muted);">（實際問卷可由診所提供或線上搜尋官方版本填寫後列印）</p>
   </div>
 
   <!-- 建議檢查 -->
   <div class="card">
     <h2>建議進一步檢查項目（供醫師參考）</h2>
 
-    <h3>1. 實驗室檢查（若尚未完整）</h3>
+    <h3>1. 實驗室檢查</h3>
     <ul>
       <li>類風濕因子（RF）+ 抗 CCP 抗體（anti-CCP）</li>
-      <li>ESR（紅血球沈降速率）— 與 CRP 互補</li>
+      <li>ESR（紅血球沈降速率）</li>
       <li>ANA（抗核抗體）± ENA 套組（若有系統性症狀）</li>
-      <li>必要時：HLA-B27（若有下背痛/臀部症狀）</li>
-      <li>追蹤血脂（已偏高，建議與家庭醫師或心臟科討論）</li>
+      <li>必要時：HLA-B27</li>
+      <li>追蹤血脂（已偏高）</li>
     </ul>
 
     <h3>2. 影像學</h3>
     <ul>
-      <li>雙手與雙腕 X 光（正面 + 側面）— 排除骨侵蝕、關節間隙變窄、鈣化等</li>
-      <li>手腕超音波（由有經驗的風濕科或復健科醫師執行）— 評估滑膜炎、肌腱炎、積液</li>
-      <li>若超音波或臨床高度懷疑，再考慮 MRI</li>
+      <li>雙手與雙腕 X 光（正面 + 側面）</li>
+      <li>手腕超音波（評估滑膜炎、肌腱炎、積液）</li>
+      <li>必要時再考慮 MRI</li>
     </ul>
 
     <h3>3. 其他</h3>
     <ul>
-      <li>職業/人因評估或物理治療師評估（若偏向過度使用）</li>
-      <li>心血管風險評估與生活型態諮詢（針對 LDL 偏高）</li>
+      <li>職業 / 人因評估或物理治療評估</li>
+      <li>心血管風險評估與生活型態諮詢</li>
     </ul>
   </div>
 
-  <!-- 臨時自我照顧建議（非治療） -->
+  <!-- 臨時措施 -->
   <div class="card">
     <h2>就診前可嘗試的暫時措施（非治療建議）</h2>
     <ul>
